@@ -1,1 +1,382 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08111f"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>LifeOS</title></head><body><header><div><small>LIFEOS</small><h1 id="hello">Your Progress</h1></div><button id="coach">🤖 AI Coach</button></header><main><section class="hero"><div><small>OVERALL PROGRESS</small><b id="overall">0%</b><div class="bar"><i id="overallBar"></i></div><p id="summary">Start your journey.</p></div><button id="next">What should I do now?</button></section><section><h2>Today</h2><div id="tasks"></div></section><section><h2>Progress across your life</h2><div id="areas" class="grid"></div></section><section><h2>Career chain</h2><div id="chain" class="chain"></div></section><section><h2>Money</h2><div class="money"><div>Revenue<strong id="rev">GH₵0</strong></div><div>Expenses<strong id="exp">GH₵0</strong></div><div>Profit<strong id="profit">GH₵0</strong></div><div>First $500<strong id="usd">$0 / $500</strong></div></div></section><section><h2>Equipment</h2><div class="card">📱 iPhone XR — Available<br><br>💻 Laptop — <b>Not yet</b></div></section></main><nav><button class="active">🏠<small>Home</small></button><button>📚<small>Studies</small></button><button>💻<small>Career</small></button><button>💰<small>Money</small></button><button>⚙️<small>More</small></button></nav><div id="modal" class="modal hidden"><div class="sheet"><button id="close">×</button><h2>🤖 AI Coach</h2><div id="answer"></div><button class="choice" data-mode="now">What should I do now?</button><button class="choice" data-mode="week">How am I doing?</button><button class="choice" data-mode="tomorrow">Plan tomorrow</button></div></div><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08111f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LifeOS">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+
+  <title>LifeOS</title>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <small>LIFEOS</small>
+    <h1 id="hello">Your Progress</h1>
+  </div>
+
+  <button id="coach">🤖 AI Coach</button>
+</header>
+
+<main id="app">
+
+  <!-- HOME -->
+  <section class="page active" data-page="home">
+
+    <section class="hero">
+      <div>
+        <small>OVERALL PROGRESS</small>
+        <b id="overall">0%</b>
+
+        <div class="bar">
+          <i id="overallBar"></i>
+        </div>
+
+        <p id="summary">Start your journey.</p>
+      </div>
+
+      <button id="next">What should I do now?</button>
+    </section>
+
+    <section>
+      <h2>Today</h2>
+      <div id="tasks"></div>
+    </section>
+
+    <section>
+      <h2>Progress across your life</h2>
+      <div id="areas" class="grid"></div>
+    </section>
+
+    <section>
+      <h2>Career chain</h2>
+      <div id="chain" class="chain"></div>
+    </section>
+
+    <section>
+      <h2>Money</h2>
+
+      <div class="money">
+        <div>
+          Revenue
+          <strong id="rev">GH₵0</strong>
+        </div>
+
+        <div>
+          Expenses
+          <strong id="exp">GH₵0</strong>
+        </div>
+
+        <div>
+          Profit
+          <strong id="profit">GH₵0</strong>
+        </div>
+
+        <div>
+          First $500
+          <strong id="usd">$0 / $500</strong>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Equipment</h2>
+
+      <div class="card">
+        📱 iPhone XR — Available
+        <br><br>
+        💻 Laptop — <b>Not yet</b>
+      </div>
+    </section>
+
+  </section>
+
+
+  <!-- STUDIES -->
+  <section class="page" data-page="studies">
+
+    <h2>📚 Studies</h2>
+
+    <div class="card">
+      <h3>Current Learning</h3>
+
+      <p>Build your foundation before moving to advanced topics.</p>
+
+      <button class="resource" data-url="https://www.coursera.org/">
+        🎓 Open Course Platform
+      </button>
+
+      <button class="resource" data-url="https://www.youtube.com/">
+        ▶️ YouTube Learning
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Study Areas</h3>
+
+      <div class="study-item">
+        <b>💻 IT Support</b>
+        <p>Computer fundamentals, troubleshooting and support.</p>
+      </div>
+
+      <div class="study-item">
+        <b>🛡️ Cybersecurity</b>
+        <p>Networking, Linux, security fundamentals and labs.</p>
+      </div>
+
+      <div class="study-item">
+        <b>🌐 Web Development</b>
+        <p>HTML, CSS, JavaScript and real projects.</p>
+      </div>
+
+      <div class="study-item">
+        <b>📋 Project Management</b>
+        <p>Planning, communication and project execution.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Today's Study Routine</h3>
+
+      <ul>
+        <li>45 min — IT</li>
+        <li>45 min — Web Development</li>
+        <li>30 min — Cybersecurity</li>
+        <li>30 min — Project Management</li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <!-- CAREER -->
+  <section class="page" data-page="career">
+
+    <h2>💻 Career</h2>
+
+    <div class="card">
+      <h3>Cybersecurity Career Chain</h3>
+
+      <div class="chain">
+        <span class="step">1. Foundation</span>
+        <span class="step">2. IT Support</span>
+        <span class="step">3. Networking</span>
+        <span class="step">4. Linux</span>
+        <span class="step">5. Cybersecurity</span>
+        <span class="step">6. Web Development</span>
+        <span class="step">7. Projects</span>
+        <span class="step">8. Clients</span>
+        <span class="step">9. Income</span>
+        <span class="step">10. Tech Career</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Career Skills</h3>
+
+      <p>🖥️ IT Support</p>
+      <p>🌐 Networking</p>
+      <p>🐧 Linux</p>
+      <p>🛡️ Cybersecurity</p>
+      <p>💻 Web Development</p>
+      <p>📋 Project Management</p>
+    </div>
+
+    <div class="card">
+      <h3>Useful Websites</h3>
+
+      <button class="resource" data-url="https://www.freecodecamp.org/">
+        FreeCodeCamp
+      </button>
+
+      <button class="resource" data-url="https://tryhackme.com/">
+        TryHackMe
+      </button>
+
+      <button class="resource" data-url="https://www.coursera.org/">
+        Coursera
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- MONEY -->
+  <section class="page" data-page="money">
+
+    <h2>💰 Money</h2>
+
+    <div class="money">
+      <div>
+        Revenue
+        <strong id="moneyRev">GH₵0</strong>
+      </div>
+
+      <div>
+        Expenses
+        <strong id="moneyExp">GH₵0</strong>
+      </div>
+
+      <div>
+        Profit
+        <strong id="moneyProfit">GH₵0</strong>
+      </div>
+
+      <div>
+        First $500
+        <strong id="moneyUsd">$0 / $500</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎯 First $500 Goal</h3>
+
+      <div class="bar">
+        <i id="moneyBar"></i>
+      </div>
+
+      <p id="moneyGoalText">$0 of $500 earned</p>
+    </div>
+
+    <div class="card">
+      <h3>💡 Income Strategy</h3>
+
+      <p>1. Build a useful skill.</p>
+      <p>2. Create proof of your skill.</p>
+      <p>3. Find clients.</p>
+      <p>4. Deliver excellent work.</p>
+      <p>5. Reinvest into better equipment.</p>
+    </div>
+
+    <div class="card">
+      <h3>Income Ideas</h3>
+
+      <p>🎬 Video editing</p>
+      <p>📸 Photography</p>
+      <p>🌐 Website creation</p>
+      <p>💻 IT support</p>
+      <p>🤖 AI-assisted services</p>
+    </div>
+
+  </section>
+
+
+  <!-- MORE -->
+  <section class="page" data-page="more">
+
+    <h2>⚙️ More</h2>
+
+    <div class="card">
+      <h3>💪 Fitness</h3>
+
+      <p>Current weight: <b id="moreWeight">68 kg</b></p>
+
+      <button id="fitnessInfo">
+        Open Fitness Tracker
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>📸 Photography</h3>
+
+      <p>Build your photography portfolio and improve your editing skills.</p>
+
+      <button class="resource" data-url="https://www.adobe.com/">
+        Adobe
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>🎬 Video Editing</h3>
+
+      <p>Practice editing and build short-form content.</p>
+
+      <button class="resource" data-url="https://www.youtube.com/">
+        Editing Tutorials
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>📱 Equipment</h3>
+
+      <p>📱 iPhone XR — Available</p>
+      <p>💻 Laptop — Not yet</p>
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- BOTTOM NAVIGATION -->
+
+<nav id="bottomNav">
+
+  <button class="nav-btn active" data-page="home">
+    🏠
+    <small>Home</small>
+  </button>
+
+  <button class="nav-btn" data-page="studies">
+    📚
+    <small>Studies</small>
+  </button>
+
+  <button class="nav-btn" data-page="career">
+    💻
+    <small>Career</small>
+  </button>
+
+  <button class="nav-btn" data-page="money">
+    💰
+    <small>Money</small>
+  </button>
+
+  <button class="nav-btn" data-page="more">
+    ⚙️
+    <small>More</small>
+  </button>
+
+</nav>
+
+
+<!-- AI COACH MODAL -->
+
+<div id="modal" class="modal hidden">
+
+  <div class="sheet">
+
+    <button id="close">×</button>
+
+    <h2>🤖 AI Coach</h2>
+
+    <div id="answer"></div>
+
+    <button class="choice" data-mode="now">
+      What should I do now?
+    </button>
+
+    <button class="choice" data-mode="week">
+      How am I doing?
+    </button>
+
+    <button class="choice" data-mode="tomorrow">
+      Plan tomorrow
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
